@@ -1,3 +1,4 @@
 resource "google_app_engine_application" "compliant" {
-  location_id = "us-central"
+  project     = var.project_id
+  location_id = "australia-southeast2" # Compliant
 }

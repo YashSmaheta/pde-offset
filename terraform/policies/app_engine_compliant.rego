@@ -1,7 +1,10 @@
-package app_engine.security
+package appengine.policy
 
-deny[msg] {
-  input.resource_changes[_].type == "google_app_engine_application"
-  input.resource_changes[_].change.after.location_id != "us-central"
-  msg := "App Engine must be deployed in us-central only."
+deny[msg] if {
+  some i
+  resource := input.resource_changes[i]
+  resource.type == "google_app_engine_application"
+  region := resource.change.after.location_id
+  region != "us-central"
+  msg := sprintf("App Engine region '%s' is not allowed. Only 'us-central' is permitted.", [region])
 }
