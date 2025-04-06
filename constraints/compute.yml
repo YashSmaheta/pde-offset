@@ -1,9 +1,0 @@
-apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: GCPNoPublicIP
-metadata:
-  name: restrict-public-ip
-spec:
-  match:
-    kinds:
-      - apiGroups: ["compute.googleapis.com"]
-        kinds: ["Instance"]

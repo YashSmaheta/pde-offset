@@ -1,9 +1,0 @@
-apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: RequireSSLForSQL
-metadata:
-  name: require-ssl-sql
-spec:
-  match:
-    kinds:
-      - apiGroups: ["sqladmin.googleapis.com"]
-        kinds: ["Instance"]
